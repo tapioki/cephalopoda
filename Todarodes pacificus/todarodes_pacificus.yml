@@ -1,0 +1,167 @@
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          spread: 18
+          rotate: 15
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [5, 0, 0, 0]
+              column_net: P8
+            home:
+              bind: [0, 0, 0, 0]
+              column_net: P9
+            top:
+              skip: true
+          key:     
+        ring:
+          spread: 18
+          stagger: 17
+          rotate: -10
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 0, 0, 10]
+              column_net: P5
+            home:
+              bind: [5, 0, 5, 19]
+              column_net: P16
+            top:
+              bind: [0, 0, 0, 19]
+              column_net: P21
+          key:
+        middle:
+          spread: 18
+          stagger: 17/3
+          rotate: -5
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 10, 0, 5]
+              column_net: P4
+            home:
+              bind: 5
+              column_net: P14
+            top:
+              bind: [0, 0, 0, 0]
+              column_net: P20
+          key:
+            shift: [0.2, 0]
+        index:
+          spread: 18
+          stagger: -17/3
+          rotate: -5
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 5, 0, 0]
+              column_net: P3
+            home:
+              bind: [5, 0, 5, 0]
+              column_net: P15
+            top:
+              bind: [0, 0, 0, 0]
+              column_net: P19
+          key:
+        inner:
+          spread: 18
+          stagger: -17/6
+          origin: [0, -17]
+          rows: 
+            bottom:
+              bind: [0, 7, 7, 0]
+              column_net: P10
+            home:
+              bind: [0, 0, 24, 5]
+              column_net: P18
+            top:
+              skip: true
+          key:
+      key:
+        footprints:
+            chocmini:
+              type: chocmini
+              nets:
+                from: =column_net
+                to: GND
+              params:
+                reverse: true    
+                keycaps: true
+      rows:
+        bottom:
+          padding: 17            
+        home:
+          padding: 17            
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-13.5,-17]
+      columns:
+        first:
+          rotate: -5
+          rows:
+            only:
+              column_net: P7
+              bind: [5, 5, 0, 0]
+        second:
+          spread: 18
+          rotate: -10
+          origin: [-9, -9.5]
+          rows:
+            only:
+              column_net: P6
+              bind: [0, 0, 0, 5]
+      rows:
+        only:
+          padding: 17
+      key:
+        footprints:
+          chocmini:
+            type: chocmini
+            nets:
+              from: =column_net
+              to: GND
+            params:
+                reverse: true     
+                keycaps: true       
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [18,17]
+        corner: 1
+    panel:
+      - type: outline
+        name: raw
+        fillet: 1
+pcbs:
+  todarodes_pacificus:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      promicro:
+        type: promicro
+        anchor:
+          ref: matrix_ring_top
+          shift: [-19, -9.5]
+          rotate: 270
+        params:
+          orientation: up
+      trrs:
+        type: trrs
+        nets:
+          A: GND
+          B: GND
+          C: P2
+          D: VCC
+        params:
+          reverse: true
+          symmetric: true
+        anchor:
+          ref: matrix_inner_bottom
+          shift: [14.85, 9]
