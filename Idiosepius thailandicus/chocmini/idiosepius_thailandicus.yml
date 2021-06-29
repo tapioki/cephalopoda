@@ -1,0 +1,137 @@
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          spread: 18
+          rotate: 15
+          origin: [0, -17]
+          rows:
+            bottom:
+              column_net: P10
+#              bind: [5, 50, 0, 0]
+            top:
+              column_net: P16
+              bind: [0, 50, 0, 0]
+        ring:
+          spread: 18
+          stagger: 1.25*17
+          rotate: -10
+          origin: [0, -17]
+          rows:
+            bottom:
+              column_net: P14
+            top:
+              column_net: P15
+              bind: [0, 5, 5, 0]
+          key:
+            shift: [-1, 0]
+        middle:
+          spread: 18
+          stagger: 17/3
+          rotate: -5
+          rows:
+            bottom:
+              column_net: P18
+              bind: [5, 5, 0, 5]
+            top:
+              column_net: P19
+        index:
+          spread: 18
+          stagger: -17/3
+          rows:
+            bottom:
+              column_net: P20
+              bind: [5, 22, 0, 0]
+            top:
+              column_net: P21
+              bind: [0, 22, 5, 5]
+      rows:
+        bottom:
+          padding: 17
+          bind: [5, 0, 0, 0]
+        top:
+          bind: [0, 0, 5, 0]
+      key:
+        footprints:
+          chocmini:
+            type: chocmini
+            nets:
+              to: =column_net
+              from: GND
+            params:
+              reverse: true
+              keycaps: true
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [36,-21]
+      columns:
+        first:
+          rotate: -15
+      rows:
+        only:
+          column_net: P9
+          bind: [0, 0, 0, 60]
+      key:
+        footprints:
+          chocmini:
+            type: chocmini
+            nets:
+              to: =column_net
+              from: GND
+            params:
+              reverse: true
+              keycaps: true
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [18,17]
+        corner: 1
+    panel:
+      - type: outline
+        name: raw
+        fillet: 1
+pcbs:
+  idiosepius_thailandicus:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      promicro:
+        type: promicro
+        anchor:
+          ref: matrix_index_top
+          shift: [21, -9.5]
+          rotate: 270
+        params:
+          orientation: down
+      jumper_left:
+        type: jumper
+        anchor:
+          ref: matrix_index_bottom
+          shift: [21, -9]
+        nets:
+          from: GND
+          to: GND
+        params:
+          side: F
+      jumper_right:
+        type: jumper
+        anchor:
+          ref: matrix_index_bottom
+          shift: [21, -9]
+        nets:
+          from: GND
+          to: P0
+        params:
+          side: B
+      via_jumpers:
+        type: via
+        anchor:
+          ref: matrix_index_bottom
+          shift: [20.5, -9]
+        nets:
+          from: GND

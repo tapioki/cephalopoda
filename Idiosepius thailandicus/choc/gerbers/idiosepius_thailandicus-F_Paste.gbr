@@ -1,0 +1,21 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,(5.1.9)-1*%
+%TF.CreationDate,2021-06-26T19:40:30+02:00*%
+%TF.ProjectId,idiosepius_thailandicus,6964696f-7365-4706-9975-735f74686169,VERSION_HERE*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Paste,Top*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW (5.1.9)-1) date 2021-06-26 19:40:30*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10R,0.635000X1.143000*%
+G04 APERTURE END LIST*
+D10*
+%TO.C,J1*%
+X85023032Y18360582D03*
+X86023792Y18360582D03*
+%TD*%
+M02*
