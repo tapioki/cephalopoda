@@ -1,5 +1,4 @@
 # Metasepia pfefferi
-    IN PROGRESS
 ![Metasepia pfefferi](/Images/metasepia_pfefferi.png)
 AKA M. pfefferi, M.P., "The second one", "Flamboyant cuttlefish"
 
