@@ -1,5 +1,4 @@
 # Todarodes pacificus
-    IN PROGRESS
 ![Todarodes pacificus](/Images/todarodes_pacificus.png)
 AKA T. pacificus, T.P., "The fourth one", "Japanese flying squid"
 
