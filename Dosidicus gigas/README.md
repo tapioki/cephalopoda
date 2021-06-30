@@ -1,5 +1,4 @@
 # Dosidicus gigas
-    IN PROGRESS
 ![Dosidicus gigas](/Images/dosidicus_gigas.png)
 AKA D. gigas, D.G., "The third one", "Jumbo squid"
 
