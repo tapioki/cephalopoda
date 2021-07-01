@@ -1,0 +1,179 @@
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          spread: 18
+          rotate: 15
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [5, 60, 0, 0]
+              column_net: P1
+              mirror.column_net: P21
+            home:
+              bind: [0, 12, 0, 0]
+              column_net: P3
+              mirror.column_net: P20
+            top:
+              bind: [0, 8, 5, 0]
+              column_net: P4
+              mirror.column_net: P19
+        ring:
+          spread: 18
+          stagger: 17
+          rotate: -10
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 0, 5, 10]
+              column_net: P5
+              mirror.column_net: P18
+            home:
+              bind: [5, 0, 5, 0]
+              column_net: P6
+              mirror.column_net: P15
+            top:
+              bind: [0, 5, 0, 0]
+              column_net: P7
+              mirror.column_net: P14
+        middle:
+          spread: 18
+          stagger: 17/3
+          rotate: -5
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 10, 5, 5]
+              column_net: P8
+              mirror.column_net: P9
+            home:
+              bind: 5
+              column_net: P9
+              mirror.column_net: P8
+            top:
+              bind: [0, 0, 0, 0]
+              column_net: P16
+              mirror.column_net: P7
+          key:
+            shift: [0.2, 0]
+        index:
+          spread: 18
+          stagger: -17/3
+          rotate: -5
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 5, 5, 0]
+              column_net: P14
+              mirror.column_net: P6
+            home:
+              bind: [5, 0, 5, 0]
+              column_net: P15
+              mirror.column_net: P5
+            top:
+              bind: [0, 0, 0, 8]
+              column_net: P18
+              mirror.column_net: P4
+        inner:
+          spread: 18
+          stagger: -17/6
+          origin: [0, -17]
+          rows: 
+            bottom:
+              bind: [0, 27, 25.82, 2]
+              column_net: P19
+              mirror.column_net: P3
+            home:
+              bind: [0, 27, 5, 5]
+              column_net: P20
+              mirror.column_net: P0
+            top:
+              bind: [0, 0, 5, 5]
+              column_net: P21
+              mirror.column_net: P1
+      key:
+        footprints:
+            chocmini:
+              type: choc
+              nets:
+                from: =column_net
+                to: GND
+              params:
+                keycaps: true
+      rows:
+        bottom:
+          padding: 17
+        home:
+          padding: 17
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [16,-24]
+      columns:
+        first:
+          rotate: -15
+          rows:
+            only:
+              column_net: P10
+              bind: [10, 0, 0, 70]
+      rows:
+        only:
+          padding: 17
+      key:
+        footprints:
+          chocmini:
+            type: choc
+            nets:
+              from: =column_net
+              to: GND
+            params:
+                keycaps: true
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [18,17]
+        corner: 1
+      - type: polygon
+        points:
+          - ref: matrix_pinky_bottom
+            shift: [-8.5, -8.38]
+          - ref: matrix_middle_home
+          - ref: thumb_first_only
+            shift: [8.5, -8.38]
+    panel:
+      - type: outline
+        name: raw
+        fillet: 1
+pcbs:
+  dosidicus_gigas_1_side:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      promicro:
+        type: promicro
+        anchor:
+          ref: matrix_inner_home
+          shift: [19, -8.5]
+          rotate: -90
+        params:
+          orientation: down
+      trrs:
+        type: trrs
+        nets:
+          A: GND
+          B: GND
+          C: P2
+          D: VCC
+        anchor:
+          ref: matrix_inner_home
+          shift: [34, 8.5]
+        params:
+          reverse: true
+          symmetric: true
+
+
