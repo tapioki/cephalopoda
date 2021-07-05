@@ -1,0 +1,160 @@
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          spread: 18
+          rotate: 15
+          rows:
+            bottom:
+              bind: [0, 0, 0, 0]
+              column_net: P9
+            home:
+              skip: true
+            top:
+              skip: true
+          key:
+            shift: [0,17]
+        ring:
+          spread: 18
+          stagger: 1.25*17
+          rotate: -10
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [5, 0, 0, 17]
+              column_net: P6
+            home:
+              bind: [5, 5, 0, 20]
+              column_net: P16
+            top:
+              bind: [0, 0, 5, 20]
+              column_net: P21
+          key:
+            shift: [-1, 0]
+        middle:
+          spread: 18
+          rotate: -5
+          stagger: 17/3
+          rows:
+            bottom:
+              bind: [5, 5, 0, 5]
+              column_net: P5
+            home:
+              column_net: P14
+            top:
+              column_net: P20
+        index:
+          spread: 18
+          stagger: -17/3
+          rows:
+            bottom:
+              column_net: P4
+            home:
+              bind: [5, 0, 5, 5]
+              column_net: P15
+            top:
+              bind: [0, 0, 5, 5]
+              column_net: P19
+        inner:
+          spread: 18
+          stagger: 0
+          rows:
+            bottom:
+              bind: [17, 0, 30, 5]
+              column_net: P18
+            home:
+              skip: true
+            top:
+              skip: true
+          key:
+            shift: [0, 17]
+      rows:
+        bottom:
+          padding: 17
+          bind: [5, 0, 0, 0]
+        home:
+          padding: 17
+          bind: 5
+        top:
+          padding: 17
+          bind: [0, 0, 5, 0]
+      key:
+        footprints:
+          choc:
+            type: choc
+            nets:
+              to: GND
+              from: =column_net
+            params:
+              reverse: true
+              keycaps: true
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-16, -38]
+      columns:
+        first:
+          rotate: -15
+          rows:
+            only:
+              bind: [5, 5, 0, 0]
+              column_net: P8
+        second:
+          spread: 18
+          rotate: -10
+          origin: [-9, -9.5]
+          rows:
+            only:
+              bind: [0, 0, 0, 5]
+              column_net: P7
+      rows:
+        only:
+      key:
+        footprints:
+          choc:
+            type: choc
+            nets:
+              to: GND
+              from: =column_net
+            params:
+              reverse: true
+              keycaps: true
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [18,17]
+        corner: 1
+    panel:
+      - type: outline
+        name: raw
+        fillet: 1
+pcbs:
+  metasepia_pfefferi_alu:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      promicro:
+        type: promicro
+        anchor:
+          ref: matrix_ring_top
+          shift: [-20, -7]
+          rotate: -90
+        params:
+          orientation: up
+      trrs:
+        type: trrs
+        nets:
+          A: GND
+          B: GND
+          C: P3
+          D: VCC
+        params:
+          reverse: true
+          symmetric: true
+        anchor:
+          ref: matrix_inner_bottom
+          shift: [2.5, 26]
