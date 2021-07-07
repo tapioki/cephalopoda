@@ -1,0 +1,33 @@
+on:
+  push:
+    paths:
+      - 'Architeuthis dux/gerbers/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Archive"
+        run: |
+          cp LICENSE Architeuthis\ dux/gerbers/ &&
+          cd Architeuthis\ dux/gerbers/ &&
+          zip ../../Architeuthis-dux.zip *
+      - name: Date Pretty
+        id: date_pretty
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%m')"
+      - name: Date Tag
+        id: date_tag
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%m')"
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "architeuthis-dux-${{ steps.date_tag.outputs.date }}"
+          prerelease: false
+          title: "Architeuthis dux ${{ steps.date_pretty.outputs.date }}"
+          files: |
+            LICENSE
+            Architeuthis-dux.zip

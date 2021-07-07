@@ -1,0 +1,33 @@
+on:
+  push:
+    paths:
+      - 'Dosidicus gigas/alu/gerbers/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Archive"
+        run: |
+          cp LICENSE Dosidicus\ gigas/alu/gerbers/ &&
+          cd Dosidicus\ gigas/alu/gerbers/ &&
+          zip ../../Dosidicus-giga-alu.zip *
+      - name: Date Pretty
+        id: date_pretty
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%m')"
+      - name: Date Tag
+        id: date_tag
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%m')"
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "dosidicus-giga-alu-${{ steps.date_tag.outputs.date }}"
+          prerelease: false
+          title: "Dosidicus gigas alu ${{ steps.date_pretty.outputs.date }}"
+          files: |
+            LICENSE
+            Dosidicus-giga-alu.zip

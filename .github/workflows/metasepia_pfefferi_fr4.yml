@@ -1,0 +1,33 @@
+on:
+  push:
+    paths:
+      - 'Metasepia pfefferi/fr4/gerbers/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Archive"
+        run: |
+          cp LICENSE Metasepia\ pfefferi/fr4/gerbers/ &&
+          cd Metasepia\ pfefferi/fr4/gerbers/ &&
+          zip ../../Metasepia-pfefferi-fr4.zip *
+      - name: Date Pretty
+        id: date_pretty
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%m')"
+      - name: Date Tag
+        id: date_tag
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%m')"
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "metasepia-pfefferi-fr4-${{ steps.date_tag.outputs.date }}"
+          prerelease: false
+          title: "Metasepia pfefferi fr4 ${{ steps.date_pretty.outputs.date }}"
+          files: |
+            LICENSE
+            Metasepia-pfefferi-fr4.zip
