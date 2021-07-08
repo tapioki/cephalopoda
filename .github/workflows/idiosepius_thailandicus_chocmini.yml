@@ -1,0 +1,33 @@
+on:
+  push:
+    paths:
+      - 'Idiosepius thailandicus/chocmini/gerbers/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Archive"
+        run: |
+          cp LICENSE Idiosepius\ thailandicus/chocmini/gerbers/ &&
+          cd Idiosepius\ thailandicus/chocmini/gerbers/ &&
+          zip ../../../Idiosepius-thailandicus-chocmini.zip *
+      - name: Date Pretty
+        id: date_pretty
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%m')"
+      - name: Date Tag
+        id: date_tag
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%m')"
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "idiosepius-thailandicus-chocmini-${{ steps.date_tag.outputs.date }}"
+          prerelease: false
+          title: "Idiosepius thailandicus chocmini ${{ steps.date_pretty.outputs.date }}"
+          files: |
+            LICENSE
+            Idiosepius-thailandicus-chocmini.zip

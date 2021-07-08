@@ -1,0 +1,33 @@
+on:
+  push:
+    paths:
+      - 'Dosidicus gigas/fr4/gerbers/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Archive"
+        run: |
+          cp LICENSE Dosidicus\ gigas/fr4/gerbers/ &&
+          cd Dosidicus\ gigas/fr4/gerbers/ &&
+          zip ../../../Dosidicus-giga-fr4.zip *
+      - name: Date Pretty
+        id: date_pretty
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%m')"
+      - name: Date Tag
+        id: date_tag
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%m')"
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "dosidicus-giga-fr4-${{ steps.date_tag.outputs.date }}"
+          prerelease: false
+          title: "Dosidicus gigas fr4 ${{ steps.date_pretty.outputs.date }}"
+          files: |
+            LICENSE
+            Dosidicus-giga-fr4.zip
