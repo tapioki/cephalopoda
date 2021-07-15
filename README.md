@@ -32,3 +32,5 @@ AKA I. thailandicus, I.T., "The sixth one", "Pygmy bobtail squid"
 
 Designed with the ARTSEY layout in mind, but could also be used with ASTENIOP.
 BlueMicro compatible.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z75C28V)
