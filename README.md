@@ -1,6 +1,6 @@
 # Cephalopoda
 
-A collection of low profile split ergonomic mechanical keyboards I have created using [ergogen](https://github.com/mrzealot/ergogen).
+A collection of low profile split ergonomic mechanical keyboards I have created using [Ergogen](https://github.com/mrzealot/ergogen).
 
 ## Sepia officinalis
 ![Sepia officinalis](images/sepia_officinalis.png)
@@ -38,5 +38,9 @@ AKA I. thailandicus, I.T., "Pygmy bobtail squid"
 
 Designed with the ARTSEY layout in mind, but could also be used with ASTENIOP.
 BlueMicro compatible.
+
+---
+
+Thank you [@o.bijmarie](https://instagram.com/o.bijmarie) for the photos of the Sepia officinalis, perce for logo help, and everyone on the Absolem club discord for their support.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z75C28V)
