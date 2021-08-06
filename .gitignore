@@ -1,0 +1,7 @@
+fp-info-cache
+*.kicad_pcb-bak
+*.pro
+*.rar
+*.zip
+*.round-tracks-config
+*.kicad_pcb-rounded
