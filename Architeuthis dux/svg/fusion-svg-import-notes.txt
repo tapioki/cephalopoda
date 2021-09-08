@@ -1,0 +1,1 @@
+Import SVG into fusion with scale 0.0096
